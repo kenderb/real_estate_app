@@ -10,9 +10,9 @@ RSpec.describe User, type: :model do
         expect(User.all.size).to eq 1
     end
 
-    it "should not create a user with a invalid name" do
+    it "should not create a user with an empty name" do
         expect(invalid_name_user).to_not be_valid
         expect { invalid_name_user.save! }.to raise_error(/Name can't be blank/)
         expect(User.all.size).to eq 0
     end
-end     
+end
