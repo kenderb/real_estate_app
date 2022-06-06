@@ -10,9 +10,10 @@ gem "bootsnap", require: false
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
-  gem 'factory_bot', '~> 6.2', '>= 6.2.1'
+  gem 'factory_bot_rails'
   gem 'pry', '~> 0.13.1'
   gem 'database_cleaner'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
 group :development do

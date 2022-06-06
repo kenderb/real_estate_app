@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 425581295d59839e1c4c19a0f4482886d1e9f373
+  branch: master
+  specs:
+    faker (2.21.0)
+      i18n (>= 1.8.11, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -83,6 +91,9 @@ GEM
     erubi (1.10.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.10.0)
@@ -184,7 +195,8 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   database_cleaner
-  factory_bot (~> 6.2, >= 6.2.1)
+  factory_bot_rails
+  faker!
   pg (~> 1.1)
   pry (~> 0.13.1)
   puma (~> 5.0)
