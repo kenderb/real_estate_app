@@ -7,12 +7,13 @@ RSpec.describe User, type: :model do
   let(:invalid_name_user) { build :user, name: '' }
   let(:invalid_email_user) { build :user, email: '' }
   let(:invalid_password_user) { build :user, password: '' }
-  let(:invalid_username_user) { build :user, username: '' }
+  let(:invalid_nickname_user) { build :user, nickname: '' }
   let(:invalid_email_user2) { build :user, email: 'some text' }
   let(:original_user_email) { build :user, email: 'email@email.com' }
   let(:duplicated_user_email) { build :user, email: 'email@email.com' }
-  let(:original_user_username) { build :user, username: 'name' }
-  let(:duplicated_user_username) { build :user, username: 'name' }
+  let(:original_user_nickname) { build :user, nickname: 'name' }
+  let(:duplicated_user_nickname) { build :user, nickname: 'name' }
+
 
   context 'creation' do
     it 'should create an user with a name' do
@@ -26,7 +27,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'should create an user with a name' do
-      expect(user.username).to_not be_nil
+      expect(user.nickname).to_not be_nil
     end
 
     it 'should create an user with a password' do
@@ -41,9 +42,9 @@ RSpec.describe User, type: :model do
       expect(User.all.size).to eq 1
     end
 
-    it 'should not create an user with an empty username' do
-      expect(invalid_username_user).to_not be_valid
-      expect { invalid_username_user.save! }.to raise_error(/Username can't be blank/)
+    it 'should not create an user with an empty nickname' do
+      expect(invalid_nickname_user).to_not be_valid
+      expect { invalid_nickname_user.save! }.to raise_error(/Nickname can't be blank/)
       expect(User.all.size).to eq 0
     end
 
@@ -62,10 +63,10 @@ RSpec.describe User, type: :model do
       expect { duplicated_user_email.save! }.to raise_error(/Email has already been taken/)
     end
 
-    it 'should not create an user with a taken username' do
-      original_user_username.save
-      expect(duplicated_user_username).to_not be_valid
-      expect { duplicated_user_username.save! }.to raise_error(/Username has already been taken/)
+    it 'should not create an user with a taken nickname' do
+      original_user_nickname.save
+      expect(duplicated_user_nickname).to_not be_valid
+      expect { duplicated_user_nickname.save! }.to raise_error(/Nickname has already been taken/)
     end
 
     it 'should not create an user with an invalid password' do
