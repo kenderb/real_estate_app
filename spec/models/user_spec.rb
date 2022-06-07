@@ -6,6 +6,7 @@ RSpec.describe User, type: :model do
   let(:user) { build :user }
   let(:invalid_name_user) { build :user, name: '' }
   let(:invalid_email_user) { build :user, email: '' }
+  let(:invalid_password_user) { build :user, password: '' }
   let(:invalid_username_user) { build :user, username: '' }
   let(:invalid_email_user2) { build :user, email: 'some text' }
   let(:original_user_email) { build :user, email: 'email@email.com' }
@@ -13,7 +14,7 @@ RSpec.describe User, type: :model do
   let(:original_user_username) { build :user, username: 'name' }
   let(:duplicated_user_username) { build :user, username: 'name' }
 
-  context "creation" do
+  context 'creation' do
     it 'should create an user with a name' do
       expect(user.name).to_not be_nil
     end
@@ -26,6 +27,10 @@ RSpec.describe User, type: :model do
 
     it 'should create an user with a name' do
       expect(user.username).to_not be_nil
+    end
+
+    it 'should create an user with a password' do
+      expect(user.password).to_not be_nil
     end
   end
 
@@ -61,6 +66,10 @@ RSpec.describe User, type: :model do
       original_user_username.save
       expect(duplicated_user_username).to_not be_valid
       expect { duplicated_user_username.save! }.to raise_error(/Username has already been taken/)
+    end
+
+    it 'should not create an user with an invalid password' do
+      expect(invalid_password_user).to_not be_valid
     end
   end
 end
