@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :omniauthable
   include DeviseTokenAuth::Concerns::User
-  validates :email, :nickname, :password, presence: true
+  validates :email, :nickname, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :nickname, uniqueness: true
 
