@@ -6,6 +6,7 @@ module RequestSpecHelper
 
   def signing
     user = create(:user, password: 'Fu11.P4$$W0rd!', password_confirmation: 'Fu11.P4$$W0rd!')
+    user.confirm
     post '/auth/sign_in', params: { email: user.email, password: 'Fu11.P4$$W0rd!' }
     { 'access-token': response.header['access-token'], client: response.header['client'], uid: response.header['uid'] }
   end
