@@ -18,7 +18,7 @@ describe 'Create', type: :request do
       expect(User.all.size).to eq 1
     end
   end
-  
+
   context 'When params are incorrect' do
     let(:params) do
       {
